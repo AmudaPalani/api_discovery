@@ -29,7 +29,7 @@ $APIRelatedServices = @(
     "*django*",        # Django applications
     "*flask*",         # Flask applications
     "*fastapi*",       # FastAPI applications
-    "*swagger*",       # Swagger/OpenAPI
+    "*swagger*"        # Swagger/OpenAPI
 )
 # Function to check if a service is running
 function Is-ServiceRunning {
@@ -78,24 +78,23 @@ function Test-APIEndpoints {
             Write-Host "  ❌ Service $service is not running" -ForegroundColor Red
         }
     }
-    
-    foreach ($port in $Ports) {
+      foreach ($port in $Ports) {
         if (Is-PortOpen -ServerName $ServerName -Port $port) {
             Write-Host "  🌐 Port $port is open" -ForegroundColor Cyan
             
             # Quick HTTP test
             try {
-                $response = Invoke-WebRequest -Uri "http://$ServerName:$port" -UseBasicParsing -TimeoutSec 5
+                $response = Invoke-WebRequest -Uri "http://${ServerName}:${port}" -UseBasicParsing -TimeoutSec 5
                 if ($response.StatusCode -eq 200) {
-                    Write-Host "  ✅ HTTP response from port $port: $($response.StatusCode)" -ForegroundColor Green
+                    Write-Host "  ✅ HTTP response from port ${port}: $($response.StatusCode)" -ForegroundColor Green
                 } else {
-                    Write-Host "  ⚠️ HTTP response from port $port: $($response.StatusCode)" -ForegroundColor Yellow
+                    Write-Host "  ⚠️ HTTP response from port ${port}: $($response.StatusCode)" -ForegroundColor Yellow
                 }
             } catch {
-                Write-Host "  ❌ Failed to connect to port $port: $_" -ForegroundColor Red
+                Write-Host "  ❌ Failed to connect to port ${port}: $_" -ForegroundColor Red
             }
         } else {
-            Write-Host "  ❌ Port $port is closed" -ForegroundColor Red
+            Write-Host "  ❌ Port ${port} is closed" -ForegroundColor Red
         }
     }
 }
@@ -107,12 +106,7 @@ foreach ($vm in $vms) {
     
     # Define ports to scan
     $portsToScan = @(
-        80, 443, 8080, 8443, 3000, 5000, 8000, 9000,
-        8081, 8082, 8083, 8084, 8085, 9080, 9443,
-        5001, 5002, 3001, 4000, 7000, 7001, 7002,
-        8888, 9999, 6000, 6001, 8090, 8091, 8092,
-        9090, 9091, 3030, 4200, 8787, 8786,
-        8020, 8088, 9200, 5601, 8086,
+        80, 443, 8080
         # Add more ports as needed
     )
     

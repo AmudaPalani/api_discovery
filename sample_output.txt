@@ -1,0 +1,53 @@
+API Discovery Script Output - Sample Results
+
+Processing server: web-prod-01
+Checking web-prod-01...
+  ✅ Server is reachable
+  🌐 Service W3SVC is running
+  ❌ Service Apache* is not running
+  ❌ Service nginx is not running
+  ❌ Service Tomcat* is not running
+  ❌ Service Jetty* is not running
+  ❌ Service WebLogic* is not running
+  ❌ Service WebSphere* is not running
+  ❌ Service *Kestrel* is not running
+  ❌ Service *IISExpress* is not running
+  ❌ Service *node* is not running
+  ❌ Service *gunicorn* is not running
+  ❌ Service *uwsgi* is not running
+  ❌ Service *django* is not running
+  ❌ Service *flask* is not running
+  ❌ Service *fastapi* is not running
+  ❌ Service *swagger* is not running
+  🌐 Port 80 is open
+  ✅ HTTP response from port 80: 200
+  🌐 Port 443 is open
+  ✅ HTTP response from port 443: 200
+  ❌ Port 8080 is closed
+
+===============================================================================
+
+Processing server: api-prod-02
+Checking api-prod-02...
+  ✅ Server is reachable
+  ❌ Service W3SVC is not running
+  ❌ Service Apache* is not running
+  ❌ Service nginx is not running
+  ❌ Service Tomcat* is not running
+  ❌ Service Jetty* is not running
+  ❌ Service WebLogic* is not running
+  ❌ Service WebSphere* is not running
+  🌐 Service *Kestrel* is running
+  ❌ Service *IISExpress* is not running
+  ❌ Service *node* is not running
+  ❌ Service *gunicorn* is not running
+  ❌ Service *uwsgi* is not running
+  ❌ Service *django* is not running
+  ❌ Service *flask* is not running
+  ❌ Service *fastapi* is not running
+  🌐 Service *swagger* is running
+  ❌ Port 80 is closed
+  🌐 Port 443 is open
+  ✅ HTTP response from port 443: 200
+  🌐 Port 8080 is open
+  ✅ HTTP response from port 8080: 200
